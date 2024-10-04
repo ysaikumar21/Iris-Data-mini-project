@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask</title>
+</head>
+<body>
+<p> <h1>Iris Data Classification </h1></p><style>
+      /* Basic reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("https://plus.unsplash.com/premium_photo-1668473366952-45f06fbf6492?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Replace with your image URL */
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+
+      /* Container for the form */
+      .container {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.9
+        ); /* White background with slight opacity */
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+        width: 850px;
+        height: 550px;
+        margin: 30px;
+      }
+
+      h1 {
+        color: hsl(324, 93%, 47%);
+        text-align: left;
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+
+      /* Styling the form */
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 14px;
+      }
+
+      /* Button styling */
+      button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      /* For the prediction result */
+      .text-warning {
+        color: #ff9800;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .container h2 {
+        font-size: 35px;
+      }
+
+      .row {
+        margin-top: 20px;
+      }
+    </style>
+
+<div class="container text-center">
+    <form action="/sk" method="POST">
+        <input type="text" name = 'sepal_length' placeholder="sepal_length"><br>
+        <input type="text" name = 'sepal_width'  placeholder="sepal_width"><br>
+        <input type = "text" name="petal_length" placeholder="petal_length"><br>
+        <input type="text" name="petal_width" placeholder="petal_width"><br>
+        <button class ='btn btn-success'>submit</button>
+
+
+    </form>
+
+    <div class="row">
+        {% if prediction %}
+        <h2 class="text-warning"> {{prediction}} </h2>
+        {% endif %}
+
+    </div>
+
+</div>
+</body>
+</html>
